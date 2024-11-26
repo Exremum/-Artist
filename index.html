@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Я - художник</title>
+
+    <!-- Иконка сайта -->
+    <link rel="icon" href="src/logo.png">
+
+    <style>
+        /* Основные стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: rgb(221, 166, 166);
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Главная секция с приветствием */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background-color: #ffffffce;
+            padding: 60px 20px;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+            border-radius: 10px;
+        }
+        .hero h1 {
+            font-size: 2.5em;
+            color: #333;
+            padding-top: 1%;
+        }
+        .hero p {
+            font-size: 1.2em;
+            color: #555;
+            max-width: 700px;
+            margin-top: 1%;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        .hero img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 20px 0;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Секция "О себе" */
+        .about {
+            display: flex;
+            gap: 40px;
+            background-color: #ffffffce;
+            padding: 60px 20px;
+            align-items: center;
+            border-radius: 10px;
+            margin-top: 40px;
+            animation: slideIn 1s ease-out;
+        }
+        .about img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .about-content h2 {
+            color: #444;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        .about-content p {
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        /* Секция Портфолио */
+        .portfolio {
+            margin-top: 60px;
+            text-align: center;
+        }
+        .portfolio h2 {
+            color: #333;
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        .portfolio-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .portfolio-item {
+            width: calc(33.333% - 20px);
+            background-color: #f0f4f8;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transform: scale(1);
+            transition: transform 0.3s ease;
+        }
+        .portfolio-item:hover {
+            transform: scale(1.05);
+        }
+        .portfolio-item img {
+            width: 100%;
+            display: block;
+            height: 500px;
+        }
+
+        /* Секция Услуги */
+        .services {
+            margin-top: 60px;
+            text-align: center;
+        }
+        .services h2 {
+            color: #333;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .services-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .service-card {
+            width: calc(33.333% - 20px);
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .service-card h3 {
+            color: #413f3f;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .service-card p {
+            color: #ffffff;
+            font-size: 1em;
+        }
+        .service-card .price {
+            color: #e91e63;
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        .service-card:hover {
+            background-color: #e0f7fa;
+        }
+        .service-card:hover .service-details {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .service-details {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(100%);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateX(-50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .about {
+                flex-direction: column;
+                text-align: center;
+            }
+            .portfolio-item, .service-card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Главная секция -->
+    <section class="hero">
+        <h1>Добро пожаловать в мое портфолио</h1>
+        <img src="src/liga.jpg" alt="Фото художника">
+        <h1>Обо мне</h1>
+        <p>Я - художник, увлеченный искусством и созданием уникальных произведений. Здесь вы можете увидеть мои работы и узнать больше обо мне и моих услугах.</p>
+        <p>Я занимаюсь искусством с детства и стремлюсь создать нечто уникальное в каждой своей работе. Мои работы - это не просто изображения, они передают эмоции и истории, которые я хочу рассказать.</p>
+    </section>
+
+    <!-- Портфолио -->
+    <section class="portfolio">
+        <h2>Мои работы</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="src/girl.jpg" alt="Работа 1">
+            </div>
+            <div class="portfolio-item">
+                <img src="src/boy.jpg" alt="Работа 2">
+            </div>
+            <div class="portfolio-item">
+                <img src="src/li.jpg" alt="Работа 3">
+            </div>
+            <div class="portfolio-item">
+                <img src="src/rizh.jpg" alt="Работа 4">
+            </div>
+            <div class="portfolio-item">
+                <img src="src/new.jpg" alt="Работа 5">
+            </div>
+            <div class="portfolio-item">
+                <img src="src/baby.jpg" alt="Работа 6">
+            <!-- Добавьте еще работы по необходимости -->
+        </div>
+    </section>
+
+    <!-- Услуги -->
+    <section class="services">
+        <h2>Услуги</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Портрет на заказ</h3>
+                <p class="price">1000 руб.</p>
+                <div class="service-details">
+                    <p>Включает профессиональный портрет в вашем стиле с фокусом на реалистичное выражение эмоций.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <h3>Иллюстрации</h3>
+                <p class="price">2100 руб.</p>
+                <div class="service-details">
+                    <p>Иллюстрации для книг, журналов и веб-сайтов, которые помогут оживить ваш проект.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <h3>Мастер-классы</h3>
+                <p class="price">600 руб.</p>
+                <div class="service-details">
+                    <p>Учитесь рисовать и творить вместе со мной! Подходит для всех возрастов и уровней мастерства.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+</body>
+</html>
